@@ -1,0 +1,30 @@
+services:
+    server-test:
+        build:
+            context: .
+            dockerfile: ./docker/test/Dockerfile
+        image: laravel-php84-server-test
+        container_name: laravel-php84-server-test
+        ports:
+            - "9000:80"
+            - "8000:81"
+        environment:
+            - APP_NAME=Laravel(test)
+            - APP_ENV=test
+            - APP_DEBUG=true
+            - DB_CONNECTION=mysql
+            - DB_HOST=
+            - DB_PORT=3306
+            - DB_DATABASE=
+            - DB_USERNAME=
+            - DB_PASSWORD=
+            - REDIS_CLIENT=phpredis
+            - REDIS_HOST=
+            - REDIS_PORT=6379
+        restart: always
+        networks:
+            - laravel-network
+
+networks:
+    laravel-network:
+        driver: bridge

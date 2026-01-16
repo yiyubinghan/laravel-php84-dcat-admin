@@ -1,0 +1,30 @@
+services:
+    server-dev:
+        build:
+            context: .
+            dockerfile: ./docker/dev/Dockerfile
+        image: laravel-php84-dcat-admin-server-dev
+        container_name: laravel-php84-dcat-admin-server-dev
+        ports:
+            - "9000:80"
+            - "8000:81"
+        environment:
+            - APP_NAME=Laravel(dev)
+            - APP_ENV=dev
+            - APP_DEBUG=true
+            - DB_CONNECTION=mysql
+            - DB_HOST=192.168.64.1
+            - DB_PORT=3306
+            - DB_DATABASE=laravel-php84-dcat-admin-dev
+            - DB_USERNAME=root
+            - DB_PASSWORD=123456
+            - REDIS_CLIENT=phpredis
+            - REDIS_HOST=192.168.64.1
+            - REDIS_PORT=6379
+        restart: always
+        networks:
+            - laravel-network
+
+networks:
+    laravel-network:
+        driver: bridge

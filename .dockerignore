@@ -1,0 +1,12 @@
+.git
+.gitignore
+vendor
+compose.yaml
+compose.*.yml
+*.md
+.env
+tests
+
+.DS_Store
+bootstrap/cache/*
+storage/logs/*
